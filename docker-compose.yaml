@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  app:
+    image: docker-spring-application:1.0.2
+    restart: on-failure
+    env_file: ./env.list
+    ports:
+      - "8082:7000"
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.host"  : "svc-be92f947-11f7-448c-8769-575ed3681ea6-ddl.azr-virginia-3.svc.singlestore.com",
+        "spring.datasource.singlestore.driver" : "jdbc:singlestore",
+        "spring.datasource.driver" : "jdbc:mariadb",
+        "spring.datasource.database" : "mdm",
+        "spring.datasource.pool.size" : "20",
+        "server.port" : "7000",
+        "spring.datasource.connectTimeout" : "4000"
+      }'
+    volumes:
+      - myapp:/apps/logs
+volumes:
+  myapp:
+

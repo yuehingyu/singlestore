@@ -39,7 +39,7 @@ public class S2Connection {
 		System.out.println(url);
 
 		Connection connection = DriverManager.getConnection(url, user, password);
-
+		
 		return connection;
 	}
 
