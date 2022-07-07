@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'c6dbcbc4-8feb-4e6f-b67b-dd31ad551212'
   imageRepository: 'yuehingyusinglestore'
   containerRegistry: 'yycontainerregistry2022.azurecr.io'
-  dockerfilePath: Dockerfile
+  dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'yycontainerregistry202215484d4c-auth'
 
