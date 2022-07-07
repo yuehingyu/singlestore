@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: yuehingyusinglestore 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yuehingyusinglestore
+  template:
+    metadata:
+      labels:
+        app: yuehingyusinglestore 
+    spec:
+      containers:
+        - name: yuehingyusinglestore 
+          image: yycontainerregistry2022.azurecr.io/yuehingyusinglestore
+          ports:
+          - containerPort: 8080
