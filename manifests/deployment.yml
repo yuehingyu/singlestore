@@ -63,3 +63,4 @@ spec:
                 secretKeyRef:
                   name: s2-secret
                   key: environment.password
+                  
