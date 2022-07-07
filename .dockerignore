@@ -3,3 +3,4 @@
 .cache
 # ignore all *.class files in all folders, including build root
 **/*.class
+env.list
