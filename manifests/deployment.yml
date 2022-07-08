@@ -16,7 +16,7 @@ spec:
         - name: yuehingyusinglestore 
           image: yycontainerregistry2022.azurecr.io/yuehingyusinglestore
           ports:
-          - containerPort: 8080
+          - containerPort: 80
           env:
             - name: spring.datasource.host
               valueFrom:
