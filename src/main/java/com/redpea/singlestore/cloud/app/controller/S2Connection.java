@@ -46,7 +46,7 @@ public class S2Connection {
 		
 		String env_host=System.getenv("spring.datasource.host");
 				
-		System.out.printf("ID1 %s PW %s1 env_host %s", user1,password1,env_host);
+		System.out.printf("ID1 %s PW %s env_host %s", user1,password1,env_host);
 
 		Connection connection = DriverManager.getConnection(url, user1, password1);
 		// Connection connection = DriverManager.getConnection(url, user, password);
