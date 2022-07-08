@@ -24,8 +24,6 @@ public class S2Connection {
 	@Value("${spring.datasource.database}")
 	private String database;
 
-	@Value("#{environment.spring.datasource.host}")
-	private String env_host;
 
 	@Value("#{environment.username}")
 	private String user;
@@ -45,6 +43,8 @@ public class S2Connection {
 		String user1="yyu";
 		
 		String password1="S2usecase2022";
+		
+		String env_host=System.getenv("spring.datasource.host");
 				
 		System.out.printf("ID1 %s PW %s1 env_host %s", user1,password1,env_host);
 
