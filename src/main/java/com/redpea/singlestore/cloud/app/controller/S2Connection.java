@@ -24,6 +24,8 @@ public class S2Connection {
 	@Value("${spring.datasource.database}")
 	private String database;
 
+	@Value("#{environment.spring.datasource.host}")
+	private String env_host;
 
 	@Value("#{environment.username}")
 	private String user;
@@ -40,8 +42,14 @@ public class S2Connection {
 		
 		System.out.printf("ID %s PW %s", user,password);
 		
+		String user1="yyu";
+		
+		String password1="S2usecase2022";
+				
+		System.out.printf("ID1 %s PW %s1 env_host %s", user1,password1,env_host);
 
-		Connection connection = DriverManager.getConnection(url, user, password);
+		Connection connection = DriverManager.getConnection(url, user1, password1);
+		// Connection connection = DriverManager.getConnection(url, user, password);
 		
 		return connection;
 	}
