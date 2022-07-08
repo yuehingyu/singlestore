@@ -33,14 +33,23 @@ stages:
     pool: Default
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+    displayName: Build
+    inputs:
+      command: build
+      containerRegistry: $(dockerRegistryServiceConnection)
+      repository: $(imageRepository)
+      dockerfile: $(dockerfilePath)
+      tags: latest
+     # arguments: --label buildtype=nightly
+
+    - task: Docker@2
+      displayName: Push
       inputs:
-        command: buildAndPush
+        command: push
+        containerRegistry: $(dockerRegistryServiceConnection)
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+        tags: latest
 
     - upload: manifests
       artifact: manifests
