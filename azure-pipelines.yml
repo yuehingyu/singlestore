@@ -33,13 +33,13 @@ stages:
     pool: Default
     steps:
     - task: Docker@2
-    displayName: Build
-    inputs:
-      command: build
-      containerRegistry: $(dockerRegistryServiceConnection)
-      repository: $(imageRepository)
-      dockerfile: $(dockerfilePath)
-      tags: latest
+      displayName: Build
+      inputs:
+        command: build
+        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        tags: latest
      # arguments: --label buildtype=nightly
 
     - task: Docker@2
