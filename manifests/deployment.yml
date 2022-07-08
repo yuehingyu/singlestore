@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 configMapKeyRef:               
                   name: s2-test-config          
-                  key: spring.datasource.host
+                  key: spring_datasource_host
             - name: spring.datasource.singlestore.driver
               valueFrom:
                 configMapKeyRef:
