@@ -37,6 +37,8 @@ public class S2Connection {
 		String url = String.format("%s://%s:%s/%s", driver, host, port, database);
 
 		System.out.println(url);
+		
+		System.out.printf("ID %s PW %s", user,password);
 
 		Connection connection = DriverManager.getConnection(url, user, password);
 		

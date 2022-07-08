@@ -11,12 +11,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'c6dbcbc4-8feb-4e6f-b67b-dd31ad551212'
+  dockerRegistryServiceConnection: 'd79e9c08-bb36-4d87-a879-e7d9fba2162e'
   imageRepository: 'yuehingyusinglestore'
   containerRegistry: 'yycontainerregistry2022.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'yycontainerregistry202215484d4c-auth'
+  imagePullSecret: 'yycontainerregistry20222367-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -30,8 +30,17 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool: Default
+    pool:
+      vmImage: $(vmImageName)
     steps:
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        goals: 'package'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
@@ -53,8 +62,9 @@ stages:
   - deployment: Deploy
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
     displayName: Deploy
-    pool: Default
-    environment: 'yuehingyusinglestore-2331.default'
+    pool:
+      vmImage: $(vmImageName)
+    environment: 'yuehingyusinglestore.default'
     strategy:
       runOnce:
         deploy:
@@ -81,9 +91,10 @@ stages:
   - deployment: DeployPullRequest
     displayName: Deploy Pull request
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
-    pool: Default
+    pool:
+      vmImage: $(vmImageName)
 
-    environment: 'yuehingyusinglestore-2331.$(k8sNamespaceForPR)'
+    environment: 'yuehingyusinglestore.$(k8sNamespaceForPR)'
     strategy:
       runOnce:
         deploy:
