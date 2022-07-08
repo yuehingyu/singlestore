@@ -28,7 +28,8 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool: Default
+    pool: 
+      $(vmImageName)
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -50,7 +51,8 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool: Default
+    pool: 
+      $(vmImageName)
     environment: 'yuehingyusinglestore-7673.default'
     strategy:
       runOnce:
