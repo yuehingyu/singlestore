@@ -39,6 +39,7 @@ public class S2Connection {
 		System.out.println(url);
 		
 		System.out.printf("ID %s PW %s", user,password);
+		
 
 		Connection connection = DriverManager.getConnection(url, user, password);
 		
