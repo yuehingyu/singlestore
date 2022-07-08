@@ -20,9 +20,9 @@ spec:
           env:
             - name: spring.datasource.host
               valueFrom:
-                configMapKeyRef:                # populate from a ConfigMap
-                  name: s2-config               # ... with this name
-                  key: spring.datasource.host   # ... and look for this key
+                configMapKeyRef:               
+                  name: s2-test-config          
+                  key: spring.datasource.host
             - name: spring.datasource.singlestore.driver
               valueFrom:
                 configMapKeyRef:
@@ -55,9 +55,9 @@ spec:
                   key: spring.datasource.connectTimeout
             - name: environment.username
               valueFrom:
-                secretKeyRef:             # populate from a Secret
-                  name: s2-secret         # ... with this name
-                  key: environment.username    # ... and look for this key
+                secretKeyRef:         
+                  name: s2-secret
+                  key: environment.username
             - name: environment.password
               valueFrom:
                 secretKeyRef:
