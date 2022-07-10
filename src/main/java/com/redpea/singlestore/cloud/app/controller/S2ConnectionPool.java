@@ -38,6 +38,8 @@ public class S2ConnectionPool {
 	@Bean(name = "S2Pool")
 	public SingleStorePoolDataSource pool() throws SQLException {
 
+		getEnvironmentInfo();
+		
 		String user1 = "yyu";
 
 		String password1 = "S2usecase2022";
@@ -46,7 +48,7 @@ public class S2ConnectionPool {
 		// String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d",
 		// driver, host, port, database,user,password,size,timeout);
 		String url = String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d", driver, host,
-				port, database, user1, password1, size, timeout);
+				port, database, user, password, size, timeout);
 
 		System.out.println("S2ConnectionPool " + url);
 
