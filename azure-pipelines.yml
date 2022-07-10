@@ -2,8 +2,8 @@
 # Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- main
+trigger: none
+# disable trigger - main
 
 resources:
 - repo: self
@@ -15,8 +15,8 @@ variables:
   imageRepository: 'yuehingyusinglestore'
   containerRegistry: 'yycontainerregistry2022.azurecr.io'
   dockerfilePath: '**/Dockerfile'
-  # hard code V1.0.0 to avoid too many copies stored in ACR tag: '$(Build.BuildId)'
-  tag: 'V1.0'
+  tag: '$(Build.BuildId)'
+  # tag: 'V1.0'
   imagePullSecret: 'yycontainerregistry20222367-auth'
 
   # Agent VM image name
