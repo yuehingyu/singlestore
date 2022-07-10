@@ -38,8 +38,8 @@ public class S2Connection {
 
 		System.out.println(url);
 		
-		user=System.getenv("username");
-		password=System.getenv("password");
+		user=System.getenv("environment.username");
+		password=System.getenv("environment.password");
 		
 		System.out.printf("ID %s PW %s", user,password);
 		
