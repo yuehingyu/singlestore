@@ -1,0 +1,22 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: single-store-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+    nginx.ingress.kubernetes.io/app-root: /customer
+  name: approot
+  namespace: default
+spec:
+  rules:
+  - host: yuehingyusinglestore.6d23ef153ed24b328ce4.eastus2.aksapp.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: yuehingyusinglestore
+            port:
+              number: 80
