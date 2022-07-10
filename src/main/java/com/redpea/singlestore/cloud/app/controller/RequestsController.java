@@ -80,5 +80,40 @@ public class RequestsController {
 		
 		return Customers;
 	}
+	
+	@RequestMapping(value = "/customer/pool", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public List<Customer> customer_handler_poll() throws SQLException {
+
+		String sql = null;
+		
+
+		List<Customer> Customers = new ArrayList<Customer>();
+		
+		// get new coonection
+		Statement stmt = S2.connection().createStatement();
+		
+		// use single store pool - there is no evidence that pool provides better performance 
+		//Statement stmt = S2pool.pool().getConnection().createStatement();
+		
+		sql="select * from customer";
+
+		ResultSet rs = stmt.executeQuery(sql);
+		
+		while (rs.next()){
+			
+			Customer cust=new Customer();
+		
+			cust.setFirst_name(rs.getString("first_name"));
+			cust.setLast_name(rs.getString("last_name"));
+			cust.setParty_id(rs.getString("party_id"));
+			cust.setTitle(rs.getString("title"));
+			Customers.add(cust);
+		}
+		
+		
+		return Customers;
+	}
+
 
 }
