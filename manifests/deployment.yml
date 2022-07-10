@@ -2,7 +2,7 @@ apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: singlestore-deployment 
-  abels:
+  labels:
     app: yuehingyusinglestore
 spec:
   replicas: 1
