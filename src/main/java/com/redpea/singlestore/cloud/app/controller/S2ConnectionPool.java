@@ -38,12 +38,11 @@ public class S2ConnectionPool {
 	@Bean(name = "S2Pool")
 	public SingleStorePoolDataSource pool() throws SQLException {
 
-		getEnvironmentInfo();
+		//getEnvironmentInfo();
 		
-		String user1 = "yyu";
-
-		String password1 = "S2usecase2022";
-
+		user = System.getenv("environment.username");
+		password = System.getenv("environment.password");
+		
 		// String url =
 		// String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d",
 		// driver, host, port, database,user,password,size,timeout);
