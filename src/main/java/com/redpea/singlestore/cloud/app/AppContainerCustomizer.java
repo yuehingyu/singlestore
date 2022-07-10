@@ -11,9 +11,9 @@ public class AppContainerCustomizer implements WebServerFactoryCustomizer<Config
 	@Override
 	public void customize(ConfigurableWebServerFactory factory)
 	{
-		/*
-		 * int port=80; System.out.printf("setting port to %d..",port);
-		 * factory.setPort(port);
-		 */
+		
+		  int port=80; System.out.printf("setting port to %d..",port);
+		  factory.setPort(port);
+		 
 	}
 }
