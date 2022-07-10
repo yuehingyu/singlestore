@@ -34,27 +34,26 @@ public class S2Connection {
 	@Bean(name = "SqlDataSource")
 	@Primary
 	public Connection connection() throws SQLException {
+		
+		getEnvironmentInfo();
+		
 		String url = String.format("%s://%s:%s/%s", driver, host, port, database);
-
+		
 		System.out.println(url);
 		
+		System.out.printf("ID %s PW %s", user,password);
+				
+		Connection connection = DriverManager.getConnection(url, user, password);
+		
+		return connection;
+	}
+	
+	public void getEnvironmentInfo() {
+		
+		host=System.getenv("spring.datasource.host");
 		user=System.getenv("environment.username");
 		password=System.getenv("environment.password");
 		
-		System.out.printf("ID %s PW %s", user,password);
-		
-		String user1="yyu";
-		
-		String password1="S2usecase2022";
-		
-		String env_host=System.getenv("spring.datasource.host");
-				
-		System.out.printf("ID1 %s PW %s env_host %s", user1,password1,env_host);
-
-		Connection connection = DriverManager.getConnection(url, user1, password1);
-		// Connection connection = DriverManager.getConnection(url, user, password);
-		
-		return connection;
 	}
 
 }
