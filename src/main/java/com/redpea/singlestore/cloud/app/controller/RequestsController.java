@@ -91,10 +91,10 @@ public class RequestsController {
 		List<Customer> Customers = new ArrayList<Customer>();
 		
 		// get new coonection
-		Statement stmt = S2.connection().createStatement();
+		// Statement stmt = S2.connection().createStatement();
 		
 		// use single store pool - there is no evidence that pool provides better performance 
-		//Statement stmt = S2pool.pool().getConnection().createStatement();
+		Statement stmt = S2pool.pool().getConnection().createStatement();
 		
 		sql="select * from customer";
 
