@@ -1,7 +1,9 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: yuehingyusinglestore 
+  name: singlestore-deployment 
+  labels:
+    app: yuehingyusinglestore
 spec:
   replicas: 1
   selector:
@@ -16,7 +18,7 @@ spec:
         - name: yuehingyusinglestore 
           image: yycontainerregistry2022.azurecr.io/yuehingyusinglestore
           ports:
-          - containerPort: 80
+          - containerPort: 8080
           env:
             - name: spring.datasource.host
               valueFrom:
