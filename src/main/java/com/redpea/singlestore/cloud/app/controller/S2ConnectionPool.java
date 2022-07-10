@@ -38,7 +38,7 @@ public class S2ConnectionPool {
 	@Bean(name = "S2Pool")
 	public SingleStorePoolDataSource pool() throws SQLException {
 
-		getEnvironmentInfo();
+		getPoolEnvironmentInfo();
 		
 		String url = String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d", driver, host,
 				port, database, user, password, size, timeout);
@@ -50,7 +50,7 @@ public class S2ConnectionPool {
 		return pool;
 	}
 
-	public void getEnvironmentInfo() {
+	public void getPoolEnvironmentInfo() {
 
 		host = System.getenv("spring.datasource.host");
 		database = System.getenv("spring.datasource.database");
