@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s2-config
+  resourceVersion: "07062022"
+data:
+  spring.datasource.host: "svc-be92f947-11f7-448c-8769-575ed3681ea6-ddl.azr-virginia-3.svc.singlestore.com"
+  spring.datasource.singlestore.driver: "jdbc:singlestore"
+  spring.datasource.driver: "jdbc:mariadb"
+  spring.datasource.database: "mdm"
+  spring.datasource.pool.size: "20"
+  spring.datasource.port: "3306"
+  spring.datasource.connectTimeout: "4000"
