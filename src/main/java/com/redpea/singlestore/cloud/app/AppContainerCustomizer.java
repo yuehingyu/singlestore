@@ -9,8 +9,10 @@ public class AppContainerCustomizer implements WebServerFactoryCustomizer<Config
 
 {
 	@Override
-	public void customize(ConfigurableWebServerFactory factory) {
-		System.out.println("setting port to 8080..");
-		factory.setPort(8080);
+	public void customize(ConfigurableWebServerFactory factory)
+	{
+		int port=80;
+		System.out.printf("setting port to %d..",port);
+		factory.setPort(port);
 	}
 }

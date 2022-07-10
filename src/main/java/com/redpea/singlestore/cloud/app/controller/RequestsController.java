@@ -46,7 +46,7 @@ public class RequestsController {
 	@Autowired
 	S2ConnectionPool S2pool;
 	
-	@RequestMapping(value = "/customer", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public List<Customer> customer_handler() throws SQLException {
 
