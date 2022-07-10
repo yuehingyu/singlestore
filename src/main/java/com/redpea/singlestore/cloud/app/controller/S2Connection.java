@@ -51,6 +51,9 @@ public class S2Connection {
 	public void getEnvironmentInfo() {
 		
 		host=System.getenv("spring.datasource.host");
+		database=System.getenv("spring.datasource.database");
+		port=System.getenv("spring.datasource.port");
+		driver=System.getenv("spring.datasource.driver");
 		user=System.getenv("environment.username");
 		password=System.getenv("environment.password");
 		

@@ -23,36 +23,45 @@ public class S2ConnectionPool {
 	@Value("${spring.datasource.database}")
 	private String database;
 
-
 	@Value("#{environment.username}")
 	private String user;
 
 	@Value("#{environment.password}")
 	private String password;
-	
+
 	@Value("${spring.datasource.pool.size}")
 	private int size;
-	
+
 	@Value("${spring.datasource.connectTimeout}")
 	private int timeout;
-	
-	
 
 	@Bean(name = "S2Pool")
-	public SingleStorePoolDataSource pool() throws SQLException {	
-		
-		String user1="yyu";
-		
-		String password1="S2usecase2022";
-		
-		// String url = String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d", driver, host, port, database,user,password,size,timeout);
-		String url = String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d", driver, host, port, database,user1,password1,size,timeout);
+	public SingleStorePoolDataSource pool() throws SQLException {
 
-		System.out.println("S2ConnectionPool "+url);
-				
+		getEnvironmentInfo();
+		
+		String url = String.format("%s://%s:%s/%s?user=%s&password=%s&maxPoolSize=%d&connectTimeout=%d", driver, host,
+				port, database, user, password, size, timeout);
+
+		System.out.println("S2ConnectionPool " + url);
+
 		SingleStorePoolDataSource pool = new SingleStorePoolDataSource(url);
 
 		return pool;
+	}
+
+	public void getEnvironmentInfo() {
+
+		host = System.getenv("spring.datasource.host");
+		database = System.getenv("spring.datasource.database");
+		port = System.getenv("spring.datasource.port");
+		driver = System.getenv("spring.datasource.driver");
+		user = System.getenv("environment.username");
+		password = System.getenv("environment.password");
+		size=Integer.parseInt(System.getenv("spring.datasource.pool.size"));
+		timeout=Integer.parseInt(System.getenv("spring.datasource.connectTimeout"));
+		
+
 	}
 
 }
