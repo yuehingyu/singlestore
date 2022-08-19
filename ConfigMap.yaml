@@ -4,7 +4,7 @@ metadata:
   name: s2-config
   resourceVersion: "07062022"
 data:
-  spring.datasource.host: "svc-be92f947-11f7-448c-8769-575ed3681ea6-ddl.azr-virginia-3.svc.singlestore.com"
+  spring.datasource.host: "svc-97a0c09b-5c1e-4fe3-818d-97d8f588e44f-dml.azr-virginia-2.svc.singlestore.com"
   spring.datasource.singlestore.driver: "jdbc:singlestore"
   spring.datasource.driver: "jdbc:mariadb"
   spring.datasource.database: "mdm"
